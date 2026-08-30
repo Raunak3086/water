@@ -22,16 +22,7 @@ export default function Navbar() {
           
           <div className="hidden md:flex space-x-8 items-center">
             <Link href="/" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Home</Link>
-            <div className="relative group py-6 -my-6">
-              <span className="text-gray-700 group-hover:text-blue-600 font-medium cursor-pointer transition-colors duration-200">Services</span>
-              <div className="absolute left-0 top-full mt-0 w-56 bg-white border border-gray-100 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left group-hover:translate-y-0 translate-y-2">
-                <div className="py-2">
-                  <Link href="/#home-services" className="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Home Services</Link>
-                  <Link href="/#commercial" className="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Commercial Solutions</Link>
-                  <Link href="/#industrial" className="block px-5 py-3 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-700 transition-colors">Industrial Solutions</Link>
-                </div>
-              </div>
-            </div>
+            <Link href="/#home-services" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Services</Link>
             <Link href="/products" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Products</Link>
             <Link href="/repair" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Repair & AMC</Link>
             <Link href="/contact" className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200">Contact Us</Link>
