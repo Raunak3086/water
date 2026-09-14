@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -12,36 +17,36 @@ export default function Footer() {
               <Image src="/logo.png" alt="Envirotec Enterprises Logo" width={150} height={50} className="h-10 w-auto object-contain" />
             </div>
             <p className="text-gray-400 text-sm mb-4">
-              Aurangabad&apos;s Trusted RO, Water Purifier & Softener Experts. Sales, Installation, Repair & AMC for Home, Commercial & Industrial.
+              {t('footerDesc')}
             </p>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-white">Services</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">{t('footerServices')}</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link href="/repair" className="hover:text-white transition">RO Repair & Service</Link></li>
-              <li><Link href="/repair" className="hover:text-white transition">Annual Maintenance (AMC)</Link></li>
-              <li><Link href="/products" className="hover:text-white transition">Water Softener Installation</Link></li>
-              <li><Link href="/products" className="hover:text-white transition">Commercial RO Plants</Link></li>
-              <li><Link href="/products" className="hover:text-white transition">Industrial Water Treatment</Link></li>
+              <li><Link href="/repair" className="hover:text-white transition">{t('repairTitle')}</Link></li>
+              <li><Link href="/repair" className="hover:text-white transition">{t('amcTitle')}</Link></li>
+              <li><Link href="/products" className="hover:text-white transition">{t('softenerTitle')}</Link></li>
+              <li><Link href="/products" className="hover:text-white transition">{t('commercialTitle')}</Link></li>
+              <li><Link href="/products" className="hover:text-white transition">{t('industrialTitle')}</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-white">Service Areas</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">{t('footerAreas')}</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li>Aurangabad</li>
-              <li>Daudnagar</li>
-              <li>Rafiganj</li>
-              <li>Nabinagar</li>
-              <li>Obra, Goh, Deo</li>
+              <li>{t('loc1')}</li>
+              <li>{t('loc2')}</li>
+              <li>{t('loc3')}</li>
+              <li>{t('loc4')}</li>
+              <li>{t('loc5')}</li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-lg font-bold mb-4 text-white">Contact Us</h4>
+            <h4 className="text-lg font-bold mb-4 text-white">{t('footerContact')}</h4>
             <ul className="space-y-4 text-gray-400">
-              <li>📍 29, Sinha College Road, near Devkriti Resort, Ramdiha, Aurangabad, Bihar 824101</li>
+              <li>📍 {t('addressVal')}</li>
               <li>📞 <a href="tel:+919873406777" className="hover:text-blue-400">+91 98734 06777</a></li>
               <li>📧 envirotecenterprises51@gmail.com</li>
             </ul>
@@ -49,7 +54,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-sm text-center text-gray-500">
-          <p>&copy; {new Date().getFullYear()} Envirotec Enterprises. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} {t('footerRights')}</p>
         </div>
       </div>
     </footer>

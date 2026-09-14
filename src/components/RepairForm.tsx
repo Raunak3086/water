@@ -2,10 +2,12 @@
 
 import { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function RepairForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const formRef = useRef<HTMLFormElement>(null);
+  const { t } = useLanguage();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,31 +42,31 @@ export default function RepairForm() {
   return (
     <form ref={formRef} className="space-y-4" onSubmit={handleSubmit}>
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
-        <input required type="text" id="name" name="name" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Your Name" />
+        <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">{t('formFullName')} *</label>
+        <input required type="text" id="name" name="name" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="Rahul Kumar" />
       </div>
       <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
-        <input required type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="+91" />
+        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">{t('formPhone')} *</label>
+        <input required type="tel" id="phone" name="phone" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="+91 98765 43210" />
       </div>
       <div>
-        <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">Address / Locality (Aurangabad)</label>
-        <input required type="text" id="address" name="address" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. Ramesh Chowk" />
+        <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">{t('formAddress')} *</label>
+        <input required type="text" id="address" name="address" className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. Ramesh Chowk, Aurangabad" />
       </div>
       <div>
-        <label htmlFor="problem" className="block text-sm font-medium text-gray-700 mb-1">Describe Problem</label>
-        <textarea required id="problem" name="problem" rows={3} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. Machine is leaking water"></textarea>
+        <label htmlFor="problem" className="block text-sm font-medium text-gray-700 mb-1">{t('formProblem')} *</label>
+        <textarea required id="problem" name="problem" rows={3} className="w-full border border-gray-300 rounded-md px-4 py-2 focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. Machine is leaking water / Bad taste"></textarea>
       </div>
       
       {status === 'success' && (
         <div className="bg-green-50 border border-green-200 text-green-700 p-3 rounded-md text-sm font-medium">
-          Thank you! We have received your request and will call you back shortly.
+          {t('formSuccess')}
         </div>
       )}
 
       {status === 'error' && (
         <div className="bg-red-50 border border-red-200 text-red-700 p-3 rounded-md text-sm font-medium">
-          Oops! Something went wrong. Please call or WhatsApp us directly.
+          {t('formError')}
         </div>
       )}
       
@@ -73,9 +75,8 @@ export default function RepairForm() {
         disabled={status === 'submitting'}
         className={`w-full text-white font-bold py-3 px-4 rounded-md transition ${status === 'submitting' ? 'bg-blue-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
       >
-        {status === 'submitting' ? 'Submitting...' : 'Submit Request'}
+        {status === 'submitting' ? t('btnSubmitting') : t('btnSubmit')}
       </button>
-      <p className="text-xs text-gray-500 text-center mt-4">We will call you back within 15 minutes during business hours.</p>
     </form>
   );
 }
