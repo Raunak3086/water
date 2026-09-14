@@ -45,7 +45,9 @@ export default function Navbar() {
               className="text-gray-700 hover:text-blue-600 focus:outline-none p-2"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-expanded={isMobileMenuOpen}
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
             >
+              <span className="sr-only">{isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}</span>
               {isMobileMenuOpen ? <X className="h-7 w-7" /> : <Menu className="h-7 w-7" />}
             </button>
           </div>
